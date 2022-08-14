@@ -1,6 +1,9 @@
-﻿
-$ipaddr = "139.130.4.5"
+﻿$ipaddr = "139.130.4.5"
+$timestamp = Get-Date -Format "MM-dd-yyyyTHH-mm-ssZzzz"
 
+echo $timestamp
+
+Start-Transcript -Path ".\network-test-$timestamp.txt"
 $result = Test-NetConnection -ComputerName $ipaddr -t
 
 echo "----------"
@@ -24,3 +27,5 @@ foreach ($item in $result.TraceRoute) {
     $i = $i + 1
 
 }
+
+Stop-Transcript 
