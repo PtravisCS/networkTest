@@ -1,10 +1,12 @@
 ﻿$ipaddr = "139.130.4.5"
-$timestamp = Get-Date -Format "MM-dd-yyyyTHH-mm-ssZzzz"
-
-echo $timestamp
+$timestamp = Get-Date -Format "MM-dd-yyyyTHH-mm-ssZz"
 
 Start-Transcript -Path ".\network-test-$timestamp.txt"
+echo $timestamp
+
 $result = Test-NetConnection -ComputerName $ipaddr -t
+
+Write-Progress -Completed -Activity "make progress bar dissapear"
 
 echo "----------"
 echo "Route to $ipaddr`:"
